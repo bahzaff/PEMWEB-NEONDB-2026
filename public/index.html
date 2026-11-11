@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manajemen Koleksi Buku - Express CRUD</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📚 Manajemen Koleksi Buku</h1>
+      <p>Tugas Pemrograman Web: Express Back-End &amp; HTML, CSS, JS Front-End</p>
+    </header>
+
+    <!-- Banner Status Request (Memudahkan Screenshot POST, PUT, DELETE) -->
+    <div id="status-log" class="status-log hidden">
+      <span id="status-badge" class="badge">GET</span>
+      <span id="status-text">Menampilkan seluruh data buku</span>
+    </div>
+
+    <div class="main-grid">
+      <!-- Form Tambah / Edit (POST & PUT) -->
+      <section class="card form-section">
+        <h2 id="form-title">➕ Tambah Buku Baru (POST)</h2>
+        <form id="book-form">
+          <input type="hidden" id="book-id" />
+
+          <div class="form-group">
+            <label for="judul">Judul Buku</label>
+            <input type="text" id="judul" placeholder="Contoh: Filosofi Teras" required />
+          </div>
+
+          <div class="form-group">
+            <label for="penulis">Penulis</label>
+            <input type="text" id="penulis" placeholder="Contoh: Henry Manampiring" required />
+          </div>
+
+          <div class="form-group">
+            <label for="tahun">Tahun Terbit</label>
+            <input type="number" id="tahun" placeholder="Contoh: 2018" min="1800" max="2099" required />
+          </div>
+
+          <div class="form-group">
+            <label for="kategori">Kategori</label>
+            <select id="kategori" required>
+              <option value="">-- Pilih Kategori --</option>
+              <option value="Fiksi">Fiksi</option>
+              <option value="Teknologi">Teknologi</option>
+              <option value="Sejarah">Sejarah</option>
+              <option value="Pengembangan Diri">Pengembangan Diri</option>
+              <option value="Sains">Sains</option>
+            </select>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="submit-btn" class="btn btn-primary">Simpan Data (POST)</button>
+            <button type="button" id="cancel-btn" class="btn btn-secondary hidden">Batal Edit</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Tabel Daftar Buku (GET, Edit/PUT, Hapus/DELETE) -->
+      <section class="card table-section">
+        <div class="table-header">
+          <h2>📋 Daftar Seluruh Buku (GET)</h2>
+          <span id="total-count" class="count-pill">0 Buku</span>
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Judul Buku</th>
+                <th>Penulis</th>
+                <th>Tahun</th>
+                <th>Kategori</th>
+                <th>Aksi (PUT / DELETE)</th>
+              </tr>
+            </thead>
+            <tbody id="book-list">
+              <!-- Data akan dimuat menggunakan JavaScript Fetch API -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
